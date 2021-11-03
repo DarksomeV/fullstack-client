@@ -1,8 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+
 import { LoginPageComponent } from './login-page/login-page.component';
 import { AuthLayoutComponent } from './core/layouts/auth-layout/auth-layout.component';
 import { RegisterPageComponent } from './register-page/register-page.component';
+import { SiteLayoutComponent } from './core/layouts/site-layout/site-layout.component';
+import { AuthGuard } from './core/guards/auth.guard';
 
 const routes: Routes = [
   {
@@ -24,13 +27,14 @@ const routes: Routes = [
       }
     ]
   },
-  // {
-  //   path: '',
-  //   component: SiteLayoutComponent,
-  //   children: [
-  //
-  //   ]
-  // }
+  {
+    path: '',
+    canActivate: [AuthGuard],
+    component: SiteLayoutComponent,
+    children: [
+
+    ]
+  }
 ];
 
 @NgModule({

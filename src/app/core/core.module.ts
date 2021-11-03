@@ -6,6 +6,7 @@ import { SiteLayoutComponent } from './layouts/site-layout/site-layout.component
 import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component';
 import { AuthService } from './services/auth.service';
 import { LocalStorageService } from './services/local-storage.service';
+import { AuthGuard } from './guards/auth.guard';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { LocalStorageService } from './services/local-storage.service';
   providers: [
     AuthService,
     LocalStorageService,
+    AuthGuard,
   ],
   exports: [
     AuthLayoutComponent,

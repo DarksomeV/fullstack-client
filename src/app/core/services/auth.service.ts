@@ -36,15 +36,15 @@ export class AuthService {
     this._localStorageService.remove('auth-token');
   }
 
+  public isAuthenticated(): boolean {
+    return !!this._token;
+  }
+
   private setToken(token: string): void {
     this._token = token;
   }
 
   private getToken(): string {
     return this._token;
-  }
-
-  private isAuthenticated(): boolean {
-    return !!this._token;
   }
 }
