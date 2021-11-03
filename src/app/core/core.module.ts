@@ -4,6 +4,8 @@ import { RouterModule } from '@angular/router';
 
 import { SiteLayoutComponent } from './layouts/site-layout/site-layout.component';
 import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component';
+import { AuthService } from './services/auth.service';
+import { LocalStorageService } from './services/local-storage.service';
 
 @NgModule({
   declarations: [
@@ -13,6 +15,10 @@ import { AuthLayoutComponent } from './layouts/auth-layout/auth-layout.component
   imports: [
     CommonModule,
     RouterModule
+  ],
+  providers: [
+    AuthService,
+    LocalStorageService,
   ],
   exports: [
     AuthLayoutComponent,
