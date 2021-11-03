@@ -27,7 +27,9 @@ export class AuthService {
       );
   }
 
-  public register(): void {}
+  public register(user: User): Observable<User> {
+    return this._http.post<User>('/api/auth/register', user)
+  }
 
   public logout() {
     this.setToken(null);
