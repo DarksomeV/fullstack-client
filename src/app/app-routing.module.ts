@@ -32,7 +32,7 @@ const routes: Routes = [
     canActivate: [AuthGuard],
     component: SiteLayoutComponent,
     children: [
-
+      { path: 'overview', loadChildren: () => import('./+overview/overview.module').then(m => m.OverviewModule) }
     ]
   }
 ];
