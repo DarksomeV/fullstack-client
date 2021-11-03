@@ -1,11 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { HttpErrorResponse } from '@angular/common/http';
 
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 
 import { AuthService } from '../core/services/auth.service';
 import { User } from '@shared/models/user.interface';
+import { MaterialUtils } from '@shared/utils/material.utils';
 
 @UntilDestroy()
 @Component({
@@ -41,7 +43,8 @@ export class RegisterPageComponent implements OnInit {
             }
           })
         },
-        (error) => {
+        ({ error }: HttpErrorResponse) => {
+          MaterialUtils.toast(error?.message);
           this.form.enable()
         });
   }

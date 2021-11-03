@@ -5,6 +5,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 
 import { AuthService } from '../core/services/auth.service';
+import { MaterialUtils } from '@shared/utils/material.utils';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @UntilDestroy()
 @Component({
@@ -38,8 +40,8 @@ export class LoginPageComponent implements OnInit {
       () => {
         this._router.navigate(['/overview'])
       },
-      (error) => {
-        console.log('error', error)
+      ({ error }: HttpErrorResponse) => {
+        MaterialUtils.toast(error?.message);
         this.form.enable()
       });
   }
@@ -58,9 +60,11 @@ export class LoginPageComponent implements OnInit {
       )
       .subscribe((params: Params) => {
       if (params['registered']) {
-        // Теперь можно зайти в систему используя свои данные
+        MaterialUtils.toast('Теперь можно зайти в систему используя свои данные');
       } else if (params['accessDenied']) {
-        // Для начала авторизируйтесь
+        MaterialUtils.toast('Для начала авторизируйтесь');
+      } else if (params['sessionFailed']) {
+        MaterialUtils.toast('Войдите в систему заново');
       }
     })
   }
