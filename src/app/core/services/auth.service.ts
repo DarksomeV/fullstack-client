@@ -10,8 +10,6 @@ import { LoginResponse } from '../models/login-response.interface';
 
 @Injectable()
 export class AuthService {
-  private _token = null;
-
   constructor(
     private _http: HttpClient,
     private _localStorageService: LocalStorageService,
@@ -22,7 +20,6 @@ export class AuthService {
       .pipe(
         tap(({token}: LoginResponse) => {
           this._localStorageService.set('auth-token', token);
-          this.setToken(token);
         }),
       );
   }
@@ -32,19 +29,14 @@ export class AuthService {
   }
 
   public logout() {
-    this.setToken(null);
     this._localStorageService.remove('auth-token');
   }
 
   public isAuthenticated(): boolean {
-    return !!this._token;
+    return !!this.getToken();
   }
 
-  private setToken(token: string): void {
-    this._token = token;
-  }
-
-  private getToken(): string {
-    return this._token;
+  public getToken(): string {
+    return this._localStorageService.get('auth-token');
   }
 }
