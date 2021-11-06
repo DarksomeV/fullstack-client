@@ -1,6 +1,12 @@
 import { ElementRef } from '@angular/core';
 
-declare var M
+declare var M;
+
+export interface MaterialInstance {
+  open?(): void;
+  close?(): void;
+  destroy?(): void;
+}
 
 export class MaterialUtils {
   public static toast(message: string) {
@@ -13,5 +19,9 @@ export class MaterialUtils {
 
   public static updateInputs(): void {
     M.updateTextFields();
+  }
+
+  public static initModal(ref: ElementRef): MaterialInstance {
+    return M.Modal.init(ref.nativeElement)
   }
 }

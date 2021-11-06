@@ -3,7 +3,7 @@ import { ActivatedRoute, Params, Router } from "@angular/router";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { HttpErrorResponse } from "@angular/common/http";
 
-import { switchMap } from "rxjs/operators";
+import { switchMap, tap } from "rxjs/operators";
 import { Observable, of } from "rxjs";
 
 import { CategoriesService } from "../services/categories.service";
@@ -29,8 +29,7 @@ export class CategoriesFormComponent implements OnInit {
     private _router: Router,
     private _categoriesService: CategoriesService,
     private _fb: FormBuilder,
-  ) {
-  }
+  ) {}
 
   public ngOnInit(): void {
     this.initForm();
@@ -86,7 +85,11 @@ export class CategoriesFormComponent implements OnInit {
     this.form.disable();
 
     if (this.isNew) {
-      obs$ = this._categoriesService.createCategory(this.form.value['name'], this.image)
+      obs$ = this._categoriesService.createCategory(this.form.value['name'], this.image).pipe(
+        tap((cat: Category) => {
+          this._router.navigate(['../categories', cat._id])
+        })
+      )
     } else {
       obs$ = this._categoriesService.updateCategory(this.category._id, this.form.value['name'], this.image)
     }

@@ -6,7 +6,6 @@ import { finalize } from 'rxjs/operators';
 import { Category } from '../models/category.interface';
 import { CategoriesService } from '../services/categories.service';
 
-
 @Component({
   selector: 'app-categories-page',
   templateUrl: './categories-page.component.html',
