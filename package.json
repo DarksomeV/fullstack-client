@@ -8,7 +8,7 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "lint": "ng lint",
-    "firebase-deploy": "ng build --prod firebase deploy"
+    "firebase-deploy": "ng build --prod && firebase deploy"
   },
   "private": true,
   "dependencies": {
