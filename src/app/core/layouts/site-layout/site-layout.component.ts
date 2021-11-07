@@ -12,6 +12,8 @@ import { AuthService } from '../../services/auth.service';
 export class SiteLayoutComponent implements OnInit, AfterViewInit {
   @ViewChild('floating') floatingRef: ElementRef;
 
+  googleExperiments;
+
   public links = [
     { url: '/overview', name: 'Обзор' },
     { url: '/analytics', name: 'Аналитика' },
@@ -26,6 +28,10 @@ export class SiteLayoutComponent implements OnInit, AfterViewInit {
   ) {}
 
   public ngOnInit(): void {
+    this.googleExperiments = Number(window['google_optimize'].get('gTcMDIWdSV6XAa1tm_qE6g'));
+    console.log(this.googleExperiments)
+    console.log(window['google_optimize'])
+    console.log(window['google_optimize'].get('gTcMDIWdSV6XAa1tm_qE6g'))
   }
 
   public ngAfterViewInit(): void {
