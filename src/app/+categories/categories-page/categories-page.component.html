@@ -16,7 +16,6 @@
 
 <div class="row" *ngIf="(categories$ | async) as categories">
   <ng-container *ngTemplateOutlet="grid; context: { categories: categories }"></ng-container>
-  {{isExperiment$ | async}}
   <div class="col s12" *ngIf="!(isExperiment$ | async); else grid">
     <div class="collection" *ngIf="categories.length; else empty">
       <a

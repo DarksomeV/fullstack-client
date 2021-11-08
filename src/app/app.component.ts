@@ -1,13 +1,17 @@
 import {Component, OnInit} from '@angular/core';
+import { ExperimentService } from './core/services/experiment.service';
 
 @Component({
   selector: 'app-root',
   template: '<router-outlet></router-outlet>\n',
 })
 export class AppComponent implements OnInit{
-  constructor() {
-  }
+  constructor(
+    private _experimentService: ExperimentService,
+  ) {}
+
+
   public ngOnInit() {
-    window['dataLayer'].push({'event': 'optimize.activate'});
+    this._experimentService.emitGoogleExperimentUpdate();
   }
 }

@@ -8,7 +8,8 @@ export class ExperimentService {
 
   public isGoogleExperimentObservable(): Observable<boolean> {
     return this._isGoogleExperiment$.asObservable().pipe(
-      tap(() => {
+      tap((res) => {
+        console.log('in service:', res);
         console.log('dataLayer:', window['dataLayer']);
         console.log('dataLayer:', window['google_optimize'].get('aF0qZgjrRAO4vuvv1nW1GA'));
       })
@@ -17,6 +18,8 @@ export class ExperimentService {
 
   public emitGoogleExperimentUpdate(): void {
     window['dataLayer'].push({'event': 'optimize.activate'});
-    this._isGoogleExperiment$.next(!!(window['google_optimize'].get('aF0qZgjrRAO4vuvv1nW1GA')))
+    const num = (window['google_optimize'].get('aF0qZgjrRAO4vuvv1nW1GA'));
+    console.log('{num}', num)
+    this._isGoogleExperiment$.next(!!num);
   }
 }
