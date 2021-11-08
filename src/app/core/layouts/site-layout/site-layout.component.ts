@@ -28,7 +28,7 @@ export class SiteLayoutComponent implements OnInit, AfterViewInit {
   ) {}
 
   public ngOnInit(): void {
-    this.googleExperiments = Number(window['google_optimize'].get('gTcMDIWdSV6XAa1tm_qE6g'));
+    this.googleExperiments = Number(window['google_optimize'].get('UAwlL5p7RxagNoNlVzKOow'));
     console.log(this.googleExperiments)
     console.log(window['google_optimize'])
     console.log(window['google_optimize'].get('gTcMDIWdSV6XAa1tm_qE6g'))
