@@ -8,7 +8,7 @@
   >
     <a [routerLink]="[link.url]" class="waves-effect waves-orange">{{link.name}}</a>
   </li>
-  <li class="bold orange-text"><a class="waves-effect waves-orange">Ты попал в ВАРИАНТ - {{googleExperiments}}</a></li>
+  <li *ngIf="isExperiment$ | async" class="bold red orange-text"><a class="waves-effect waves-orange">ТЫ ВИДИШЬ СЕКРЕТНУЮ ВКЛАДКУ</a></li>
   <li class="bold last" (click)="logout($event)"><a class="waves-effect waves-orange">Выйти</a></li>
 </ul>
 <!--CONTENT-->

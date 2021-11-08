@@ -1,13 +1,21 @@
 <div class="page-title">
   <h4>Категории</h4>
   <button
+    type="button"
+    (click)="joinExperiment()"
+    class="waves-effect waves-light btn blue lighten-2 mr1">
+    <i class="material-icons left">backup</i>
+    Поучаствовать в эксперименте
+  </button>
+  <button
     class="waves-effect waves-light btn grey darken-1"
     routerLink="/categories/new"
   >Добавить категорию</button>
 </div>
 
 <div class="row" *ngIf="(categories$ | async) as categories">
-  <div class="col s12">
+  <ng-container *ngTemplateOutlet="grid; context: { categories: categories }"></ng-container>
+  <div class="col s12" *ngIf="!(isExperiment$ | async); else grid">
     <div class="collection" *ngIf="categories.length; else empty">
       <a
         *ngFor="let cat of categories"
@@ -17,6 +25,15 @@
     </div>
   </div>
 </div>
+
+<ng-template #grid let-categories="categories">
+  <div class="d-flex" *ngIf="isExperiment$ | async">
+    <div [routerLink]="['/categories', cat._id]" class="custom-collection-item mr1" *ngFor="let cat of categories">
+      <a>{{ cat.name }}</a>
+    </div>
+  </div>
+</ng-template>
+
 
 <ng-template #empty>
   <div class="center">

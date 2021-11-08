@@ -9,6 +9,7 @@ import { AuthService } from './services/auth.service';
 import { LocalStorageService } from './services/local-storage.service';
 import { AuthGuard } from './guards/auth.guard';
 import { TokenInterceptor } from './interceptors/token.interceptor';
+import { ExperimentService } from './services/experiment.service';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { TokenInterceptor } from './interceptors/token.interceptor';
     AuthService,
     LocalStorageService,
     AuthGuard,
+    ExperimentService,
     {
       provide: HTTP_INTERCEPTORS,
       multi: true,

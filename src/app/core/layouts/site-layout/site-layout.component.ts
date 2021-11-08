@@ -3,6 +3,8 @@ import { Router } from '@angular/router';
 
 import { MaterialUtils } from '@shared/utils/material.utils';
 import { AuthService } from '../../services/auth.service';
+import { Observable } from 'rxjs';
+import { ExperimentService } from '../../services/experiment.service';
 
 @Component({
   selector: 'app-site-layout',
@@ -11,6 +13,7 @@ import { AuthService } from '../../services/auth.service';
 })
 export class SiteLayoutComponent implements OnInit, AfterViewInit {
   @ViewChild('floating') floatingRef: ElementRef;
+  public isExperiment$: Observable<boolean>;
 
   googleExperiments;
 
@@ -25,13 +28,11 @@ export class SiteLayoutComponent implements OnInit, AfterViewInit {
   constructor(
     private _authService: AuthService,
     private _router: Router,
+    private _experimentService: ExperimentService,
   ) {}
 
   public ngOnInit(): void {
-    this.googleExperiments = Number(window['google_optimize'].get('BDwjFXXxTjOA0H2xk_FHCA'));
-    console.log(this.googleExperiments)
-    console.log(window['google_optimize'])
-    console.log(window['google_optimize'].get('gTcMDIWdSV6XAa1tm_qE6g'))
+    this.isExperiment$ = this._experimentService.isGoogleExperimentObservable();
   }
 
   public ngAfterViewInit(): void {
