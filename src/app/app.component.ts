@@ -7,5 +7,7 @@ import {Component, OnInit} from '@angular/core';
 export class AppComponent implements OnInit{
   constructor() {
   }
-  public ngOnInit() {}
+  public ngOnInit() {
+    window['dataLayer'].push({'event': 'optimize.activate'});
+  }
 }
