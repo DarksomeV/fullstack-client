@@ -17,5 +17,6 @@ export class HistoryPageComponent implements OnInit {
     const expires = "; expires=" + date.toUTCString();
 
     document.cookie = 'experiment' + "=" + ('true')  + expires + "; path=/";
+    window['dataLayer'].push({'event': 'optimize.activate'});
   }
 }
