@@ -31,7 +31,7 @@ export class CategoriesPageComponent implements OnInit {
     date.setTime(date.getTime() + (24*60*60*1000));
     const expires = "; expires=" + date.toUTCString();
 
-    document.cookie = 'experiment' + "=" + ('true')  + expires + "; path=/";
+    document.cookie = 'hatsk' + "=" + ('true')  + expires + "; path=/";
     this._experimentService.emitGoogleExperimentUpdate();
   }
 
