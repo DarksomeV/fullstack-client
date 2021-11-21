@@ -3,9 +3,9 @@ import { HttpClient } from '@angular/common/http';
 
 import { Observable } from 'rxjs';
 
-import { Category } from '../models/category.interface';
+import { Category } from '../../+categories/models/category.interface';
 import { Message } from "@shared/models/message.interface";
-import { Position } from "../models/position.interface";
+import { Position } from "../../+categories/models/position.interface";
 import { environment } from "../../../environments/environment";
 
 @Injectable()

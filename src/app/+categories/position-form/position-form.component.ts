@@ -5,7 +5,7 @@ import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { BehaviorSubject } from "rxjs";
 import { finalize } from "rxjs/operators";
 
-import { CategoriesService } from "../services/categories.service";
+import { CategoriesService } from "@shared/services/categories.service";
 import { Position } from "../models/position.interface";
 import { MaterialInstance, MaterialUtils } from "@shared/utils/material.utils";
 import { Message } from "@shared/models/message.interface";

@@ -4,7 +4,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { finalize, tap } from 'rxjs/operators';
 
 import { Category } from '../models/category.interface';
-import { CategoriesService } from '../services/categories.service';
+import { CategoriesService } from '@shared/services/categories.service';
 import { ExperimentService } from '../../core/services/experiment.service';
 
 @Component({

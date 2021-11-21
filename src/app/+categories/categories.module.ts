@@ -4,7 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { ReactiveFormsModule } from "@angular/forms";
 
 import { CategoriesPageComponent } from './categories-page/categories-page.component';
-import { CategoriesService } from './services/categories.service';
+import { CategoriesService } from '@shared/services/categories.service';
 import { LoaderModule } from '@shared/components/loader/loader.module';
 import { CategoriesFormComponent } from './categories-form/categories-form.component';
 import { PositionFormComponent } from './position-form/position-form.component';

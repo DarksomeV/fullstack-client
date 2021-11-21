@@ -6,7 +6,7 @@ import { HttpErrorResponse } from "@angular/common/http";
 import { switchMap, tap } from "rxjs/operators";
 import { Observable, of } from "rxjs";
 
-import { CategoriesService } from "../services/categories.service";
+import { CategoriesService } from "@shared/services/categories.service";
 import { Category } from "../models/category.interface";
 import { MaterialUtils } from "@shared/utils/material.utils";
 import { Message } from "@shared/models/message.interface";
