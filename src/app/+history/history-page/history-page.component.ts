@@ -5,6 +5,7 @@ import { UntilDestroy, untilDestroyed } from "@ngneat/until-destroy";
 import { MaterialInstance, MaterialUtils } from "@shared/utils/material.utils";
 import { OrderService } from "@shared/services/order.service";
 import { Order } from "@shared/models/order.interface";
+import { Filter } from "@shared/models/filter.interface";
 
 const STEP = 2;
 
@@ -22,6 +23,7 @@ export class HistoryPageComponent implements OnInit, OnDestroy, AfterViewInit {
   public loadingMore: boolean = false;
   public reloading: boolean = true;
   public offset: number = 0;
+  public filter: Filter = {};
   public limit: number = STEP;
   public orderList: Order[] = [];
   public noMoreOrders = false;
@@ -48,11 +50,20 @@ export class HistoryPageComponent implements OnInit, OnDestroy, AfterViewInit {
     this.getOrderList();
   }
 
+  public applyFilters(filter: Filter): void {
+    this.orderList = [];
+    this.offset = 0;
+    this.reloading = true;
+    this.filter = filter;
+
+    this.getOrderList();
+  }
+
   private getOrderList(): void {
-    const params = {
+    const params = Object.assign({}, this.filter, {
       offset: this.offset,
       limit: this.limit,
-    };
+    })
 
     this._orderService.getAll(params)
       .pipe(

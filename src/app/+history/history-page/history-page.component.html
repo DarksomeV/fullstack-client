@@ -12,7 +12,10 @@
   </button>
 </div>
 
-<app-history-filter *ngIf="isFilterVisible"></app-history-filter>
+<app-history-filter
+  *ngIf="isFilterVisible"
+  (onFilter)="applyFilters($event)"
+></app-history-filter>
 
 <div *ngIf="!reloading; else reloadingBlock">
   <ng-container *ngIf="orderList.length; else empty">
