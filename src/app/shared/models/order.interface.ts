@@ -3,6 +3,7 @@ export interface Order {
   order?: number;
   user?: string;
   list: OrderPosition[];
+  totalPrice?: number;
   _id?: string;
 }
 

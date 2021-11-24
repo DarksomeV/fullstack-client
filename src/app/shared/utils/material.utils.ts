@@ -22,6 +22,10 @@ export class MaterialUtils {
   }
 
   public static initModal(ref: ElementRef): MaterialInstance {
-    return M.Modal.init(ref.nativeElement)
+    return M.Modal.init(ref.nativeElement);
+  }
+
+  public static initTooltip(ref: ElementRef): MaterialInstance {
+    return M.Tooltip.init(ref.nativeElement);
   }
 }
